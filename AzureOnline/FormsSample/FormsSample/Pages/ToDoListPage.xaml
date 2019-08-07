@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="FormsSample.Pages.ToDoListPage"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             Title="{Binding Title}">
+	<ContentPage.Content>
+		<StackLayout>
+      <syncfusion:SfListView x:Name="listView"
+                      BackgroundColor="#F7F7F7" 
+                      ItemsSource="{Binding Items}"
+                      SelectedItem="{Binding SelectedToDoItem, Mode=TwoWay}"
+                      ItemSize="50">
+        <syncfusion:SfListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <StackLayout Padding="10" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                <Label Text="{Binding Text}" TextColor="#272832" HorizontalOptions="FillAndExpand"/>
+                <Switch IsToggled="{Binding Completed}"/>
+              </StackLayout>
+            </ViewCell>
+          </DataTemplate>
+        </syncfusion:SfListView.ItemTemplate>
+      </syncfusion:SfListView>
+			<Button Text="Add New" BackgroundColor="#A6E55E" TextColor="White" Command="{Binding AddNewItemCommand}"></Button>
+      <Button Text="Fetch" BackgroundColor="#A6E55E" TextColor="White" Command="{Binding FetchItemCommand}" x:Name="fetcbutton" />
+    </StackLayout>
+	</ContentPage.Content>
+</ContentPage>
